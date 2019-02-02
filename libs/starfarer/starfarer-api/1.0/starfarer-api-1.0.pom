@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" 
+  xmlns="http://maven.apache.org/POM/4.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>starfarer</groupId>
+  <artifactId>starfarer-api</artifactId>
+  <version>1.0</version>
+  <name>Starsector API</name>
+  <description>To get this working, copy "starfarer.api.jar" and "starfarer.api-doc.jar" from starsector-core into this folder, 
+  then rename them as "starfarer-api-1.0.jar" and "starfarer-api-1.0-sources.jar", respectively.</description>
+</project>

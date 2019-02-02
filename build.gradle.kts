@@ -31,7 +31,7 @@ dependencies {
     // Also import the rest of the Starsector jar dependencies (except for the API, which we do specially above)
     implementation(fileTree(starsectorCoreDirectory) {
         include("*.jar")
-        exclude("starfarer.api.jar")
+        exclude("starfarer.api.jar") // If you just want to compile the mod and do not care about viewing sources, comment this line out
     })
 
     // If you have LazyLib incuded as a mod, you can uncomment this line and use it as a dependency in your mod

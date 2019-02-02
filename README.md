@@ -47,7 +47,6 @@ Written for IntelliJ Community. Latest version is 2018.3.4 as of writing.
 
 Follow the first two steps of *Ava_N*'s excellent tutorial here: http://fractalsoftworks.com/forum/index.php?topic=10057.msg220052#msg220052, copied and edited here in case the link goes dead.
 
-
 ```text
 1. Make a copy of your starsector-core/starsector.bat file and call it "debug-starsector.bat" (replace .bat with .sh for linux). This is not strictly necessary but highly recommended in case the bat file gets messed up.
 
@@ -65,7 +64,7 @@ Don't forget the & at the end, it's what makes the command run in a separate pro
 The rest of the steps have been condensed into one, thanks to Gradle.
 
 - Add the one-click run to IntelliJ, which will first build our mod, then launch Starsector in debug mode, and finally attach our debugger to it:
-  -  In IntelliJ, click `Run - Edit Configurations`, click the `+` in the top-left and choose "Remote".
+  - In IntelliJ, click `Run - Edit Configurations`, click the `+` in the top-left and choose "Remote".
   - Name it "Debug Starsector" (or similar)
   - In the "Configuration" tab, in the "Before Launch" tab at the bottom, click "+" and "Run Gradle Task". Choose your gradle project (eg "template"), and for task, choose "jar".
   - Do the same thing but for the task, write "debug-starsector".
@@ -78,7 +77,8 @@ The rest of the steps have been condensed into one, thanks to Gradle.
 ## Building The Code
 
 1. Open `build.gradle.kts` in a text editor and change `starsectorDirectory` to point to the location of Starsector on your hard drive.
-2. Run `./gradlew jar` from the mod folder (`gradlew.bat jar` on Windows).
+2. In the same file, comment out `exclude("starfarer.api.jar")`. You won't be able to see sources from within IntelliJ, but the mod will compile.
+3. Run `./gradlew jar` from the mod folder (`gradlew.bat jar` on Windows).
    - You must have Java installed to run this step.
 
 ## Other

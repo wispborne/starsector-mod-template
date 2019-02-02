@@ -54,13 +54,24 @@ tasks {
     register("debug-starsector", Exec::class) {
         println("Starting debugger for Starsector...")
         workingDir = file(starsectorCoreDirectory)
-        commandLine = listOf("cmd", "/C", "starsectorDebug.bat")
+
+
+        commandLine = if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+            listOf("cmd", "/C", "debug-starsector.bat")
+        } else {
+            listOf("./starsectorDebug.bat")
+        }
     }
 
     register("run-starsector", Exec::class) {
         println("Starting Starsector...")
         workingDir = file(starsectorCoreDirectory)
-        commandLine = listOf("cmd", "/C", "starsector.bat")
+
+        commandLine = if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+            listOf("cmd", "/C", "starsector.bat")
+        } else {
+            listOf("./starsector.bat")
+        }
     }
 }
 

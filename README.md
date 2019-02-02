@@ -39,6 +39,7 @@ Written for IntelliJ Community. Latest version is 2018.3.4 as of writing.
   - [ ] `template.version`: change "template" to the unique name of your mod (eg "myMod.version")
   - [ ] `data/config/version/version_files.csv`: open and change "template.version" to the name of the file you just changed ("eg "myMod.version").
   - [ ] Update your version file (`template.version`) to use data for your mod.
+- Change `LICENSE` to something else. [Apache 2](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)) is a popular one.
 
 ## IntelliJ Configuration
 

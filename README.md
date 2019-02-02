@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a skeleton of a Starsector mod that uses Gradle as its build system, Kotlin as the Gradle DSL, and Kotlin as the programming language.
+This is a template for a Starsector mod that uses Gradle as its build system, Kotlin as the Gradle DSL, and Kotlin as the programming language.
 
 It will also have a one-click command to build your mod and launch Starsector with full breakpoint debugging.
 

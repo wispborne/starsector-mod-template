@@ -5,7 +5,7 @@
     "utility": "false",
     "version": "1.0.0",
     "description": "Skeleton of a mod that uses Gradle as a build system, Kotlin as the Gradle DSL, and preferably (but not necessarily) IntelliJ as the IDE.",
-    "gameVersion": "0.9a",
+    "gameVersion": "0.9.1a",
     "jars":["jars/My_Mod.jar"],
     "modPlugin":"com.example.template.LifecyclePlugin"
 }

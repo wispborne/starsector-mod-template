@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 /////////////////
-// CHANGE ME
+// ATTN: CHANGE ME
 val starsectorDirectory = "C:/Program Files (x86)/Fractal Softworks/Starsector"
 val jarFileName = "My_Mod.jar"
 /////////////////
@@ -10,7 +10,7 @@ val starsectorCoreDirectory = "$starsectorDirectory/starsector-core"
 val starsectorModDirectory = "$starsectorDirectory/mods"
 
 plugins {
-    kotlin("jvm") version "1.3.11"
+    kotlin("jvm") version "1.3.50"
     java
 }
 
@@ -26,6 +26,7 @@ dependencies {
 
     // We set up the Starsector API jarfile as a local Maven dependency (using the Maven folder structure)
     // so that Gradle can import the Starsector API with the actual source code available to it.
+    // ATTN: You must add this, as described in the readme.md file.
     implementation("starfarer:starfarer-api:1.0")
 
     // Also import the rest of the Starsector jar dependencies (except for the API, which we do specially above)

@@ -22,21 +22,21 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk7"))
+    compileOnly(kotlin("stdlib-jdk7"))
 
     // We set up the Starsector API jarfile as a local Maven dependency (using the Maven folder structure)
     // so that Gradle can import the Starsector API with the actual source code available to it.
     // ATTN: You must add this, as described in the readme.md file.
-    implementation("starfarer:starfarer-api:1.0")
+    compileOnly("starfarer:starfarer-api:1.0")
 
     // Also import the rest of the Starsector jar dependencies (except for the API, which we do specially above)
-    implementation(fileTree(starsectorCoreDirectory) {
+    compileOnly(fileTree(starsectorCoreDirectory) {
         include("*.jar")
-        exclude("starfarer.api.jar") // If you just want to compile the mod and do not care about viewing sources, comment this line out
+        exclude("*_obf.jar", "starfarer.api.jar") // If you just want to compile the mod and do not care about viewing sources, comment this line out
     })
 
-    // If you have LazyLib incuded as a mod, you can uncomment this line and use it as a dependency in your mod
-//    implementation(fileTree("$starsectorModDirectory/LazyLib/jars") { include("*.jar") })
+    // It is recommended to require LazyLib, as it will provide the Kotlin runtime.
+    compileOnly(fileTree("$starsectorModDirectory/LazyLib/jars") { include("*.jar") })
 
     // Unit testing libraries. Good to use, but not necessary.
 //    testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.2")

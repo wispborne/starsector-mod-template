@@ -52,7 +52,7 @@ Written for IntelliJ Community. Latest version is 2019.2.3 as of writing.
 - Working directory: `C:\Program Files (x86)\Fractal Softworks\Starsector\starsector-core`, or wherever your `starsector-core` folder is.
 - Classpath: use your mod's ("starsector-gradle-template", by default)
 - In the "Configuration" tab, in the "Before Launch" tab at the bottom, click "+" and "Run Gradle Task". Choose your gradle project (eg "template"), and for task, choose "jar".
-- Click Ok. You should now be able to choose Run Starsector from the Run menu and then click the Debug button (it's a bug) 
+- Click Ok. You should now be able to choose Run Starsector from the Run menu and then click the Debug button (the icon of a bug) 
 - Don't forget to enable your mod on the Starsector launch dialog!
 
 *Example for this template*

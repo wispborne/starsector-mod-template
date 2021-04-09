@@ -15,9 +15,8 @@ Written for IntelliJ Community. Latest version is 2019.2.3 as of writing.
 ## Initial Setup Checklist
 
 - [ ] Open `build.gradle.kts` and update all values in the `CHANGE ME` at the top.
-- Change the project and package names to be specific to you:
-  - [ ] The easiest way might be to, in IntelliJ, open up `src/main/kotlin/com/example/template`, right-click on the first line (`package com.example.template`) and go to `Refactor - Rename`. From there, you may rename `com.example.template` to anything. If it pops up a refactoring preview, keep everything selected and click `Do Refactor`. 
-  - [ ] We want to, in `settings.gradle`, change `rootProject.name = 'template'` to be equal to your new name instead (the rename we just did should have already done that).
+- [ ] Change the package from the template default. In IntelliJ, open up `src/main/kotlin/com/example/template`, right-click on the first line (`package com.example.template`) and go to `Refactor - Rename`. From there, you may rename `com.example.template` to anything. If it pops up a refactoring preview, keep everything selected and click `Do Refactor`. 
+- [ ] In `settings.gradle`, change `rootProject.name = 'template'` to be equal to your new name instead (the rename we just did should have already done that).
   
 ### Optional
 

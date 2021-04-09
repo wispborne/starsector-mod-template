@@ -10,7 +10,7 @@ One of the main goals is to move as much of the build process out of IntelliJ as
 
 Another goal is to have more project configuration as code, rather than IDE-specific files. That way, they'll get versioned (and be shared, as mentioned).
 
-Written for IntelliJ Community. Latest version is 2019.2.3 as of writing.
+Written for IntelliJ Community. Latest version is 2021.1 as of writing.
 
 ## Initial Setup Checklist
 

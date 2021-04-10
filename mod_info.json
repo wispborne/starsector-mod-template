@@ -6,9 +6,9 @@
     "utility": "false",
     "version": { "major":"1", "minor": "0", "patch": "0" },
     "description": "null",
-    "gameVersion": "0.95a-RC10",
+    "gameVersion": "0.95a-RC12",
     "jars":["jars/My_Mod.jar"],
-    "modPlugin":"org.your.path.ModPlugin",
+    "modPlugin":"com.example.template.LifecyclePlugin",
     "dependencies": [
         {
             "id": "lw_lazylib",

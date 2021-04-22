@@ -1,6 +1,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-/////////////////
+//////////////////////
 // VARIABLES TO CHANGE
 
 object Variables {
@@ -18,10 +18,13 @@ object Variables {
     val isUtilityMod = false
     val masterVersionFile = "https://raw.githubusercontent.com/githubname/githubrepo/master/$modId.version"
     val modThreadId = "00000"
+
+    val modFolderName = modName.replace(" ", "-")
+
 // Scroll down and change the "dependencies" part of mod_info.json, if needed
 // LazyLib is needed to use Kotlin, as it provides the Kotlin Runtime
 }
-/////////////////
+//////////////////////
 
 val starsectorCoreDirectory = "${Variables.starsectorDirectory}/starsector-core"
 val starsectorModDirectory = "${Variables.starsectorDirectory}/mods"
@@ -96,6 +99,7 @@ tasks {
 
     register("create-metadata-files") {
         val version = Variables.modVersion.split(".").let { javaslang.Tuple3(it[0], it[1], it[2]) }
+        System.setProperty("line.separator", "\n") // Use LF instead of CRLF like a normal person
 
         File(projectDir, "mod_info.json")
             .writeText(
@@ -122,6 +126,15 @@ tasks {
                 """.trimIndent()
             )
 
+        File(projectDir, "data/config/version/version_files.csv")
+            .writeText(
+                """
+                    version file
+                    ${Variables.modId}.version
+
+                """.trimIndent()
+            )
+
         File(projectDir, "${Variables.modId}.version")
             .writeText(
                 """
@@ -139,6 +152,10 @@ tasks {
                     }
                 """.trimIndent()
             )
+
+
+        File(projectDir, ".github/workflows/mod-folder-name.txt")
+            .writeText(Variables.modFolderName)
     }
 }
 

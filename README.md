@@ -38,8 +38,12 @@ Written for IntelliJ Community. Latest version is 2021.1 as of writing.
 - [ ] Check other values to make sure they fit your Starsector install. By default, they are set for a typical Windows install.
 - Click Ok. You should now be able to choose Run Starsector from the Run menu and then click the Debug button (the icon of a bug) 
 - Don't forget to enable your mod on the Starsector launch dialog!
+- If you are running on linux, the VM Arguments should instead be
+  
+  ```-server -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005 -Djava.library.path=./native/linux -Xms1536m -Xmx1536m -Xss2048k -classpath janino.jar:commons-compiler.jar:commons-compiler-jdk.jar:starfarer.api.jar:starfarer_obf.jar:jogg-0.0.7.jar:jorbis-0.0.15.jar:json.jar:lwjgl.jar:jinput.jar:log4j-1.2.9.jar:lwjgl_util.jar:fs.sound_obf.jar:fs.common_obf.jar:xstream-1.4.10.jar -Dcom.fs.starfarer.settings.paths.saves=./saves -Dcom.fs.starfarer.settings.paths.screenshots=./screenshots -Dcom.fs.starfarer.settings.paths.mods=./mods -Dcom.fs.starfarer.settings.paths.logs=. -Dcom.fs.starfarer.settings.linux=true com.fs.starfarer.StarfarerLauncher```
 
 *Example for this template*
+
 ![Final Run Configuration](screenshots/runConfig.png "Final Run Configuration")
 
 ## Other

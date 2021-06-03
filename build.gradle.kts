@@ -109,8 +109,9 @@ tasks {
                 """.trimIndent()
             )
 
-        File(projectDir, "data/config/version/version_files.csv")
-            .writeText(
+        with(File(projectDir, "data/config/version/version_files.csv")) {
+            this.parentFile.mkdirs()
+            this.writeText(
                 """
                     version file
                     ${Variables.modId}.version
@@ -137,8 +138,9 @@ tasks {
             )
 
 
-        File(projectDir, ".github/workflows/mod-folder-name.txt")
-            .writeText(Variables.modFolderName)
+        with(File(projectDir, ".github/workflows/mod-folder-name.txt")) {
+            this.parentFile.mkdirs()
+            this.writeText(Variables.modFolderName)
     }
 
     // If enabled, will copy your mod to the /mods directory when run (and whenever gradle syncs).

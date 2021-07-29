@@ -1,7 +1,9 @@
 package com.example.template
 
 import com.fs.starfarer.api.BaseModPlugin
+import com.fs.starfarer.api.Global
 import com.thoughtworks.xstream.XStream
+import main.java.ExampleEveryFrameScript
 
 class LifecyclePlugin : BaseModPlugin() {
 
@@ -11,6 +13,12 @@ class LifecyclePlugin : BaseModPlugin() {
 
     override fun onGameLoad(newGame: Boolean) {
         super.onGameLoad(newGame)
+
+        // Showing that we can compile and run Java files as well.
+        // This does nothing and can be deleted.
+        if (Global.getSettings().isDevMode) {
+            Global.getSector().addTransientScript(ExampleEveryFrameScript())
+        }
     }
 
     override fun beforeGameSave() {

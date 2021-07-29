@@ -13,7 +13,7 @@ object Variables {
     val modName = "My Mod"
     val author = "Your Name"
     val description = "Mod description."
-    val gameVersion = "0.95a-RC12"
+    val gameVersion = "0.95a-RC15"
     val jars = arrayOf("jars/$jarFileName")
     val modPlugin = "com.example.template.LifecyclePlugin"
     val isUtilityMod = false
@@ -167,7 +167,19 @@ tasks {
 
 }
 
+sourceSets.main {
+    java.setSrcDirs(listOf("src"))
+}
+kotlin.sourceSets.main {
+    kotlin.setSrcDirs(listOf("src"))
+    resources.setSrcDirs(listOf("data"))
+}
 // Compile to Java 6 bytecode so that Starsector can use it
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.6"
+}
+// Compile to Java 6 bytecode so that Starsector can use it
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
 }

@@ -30,7 +30,7 @@ object Variables {
 // Note: On Linux, use "${Variables.starsectorDirectory}" as core directory
 val starsectorCoreDirectory = "${Variables.starsectorDirectory}/starsector-core"
 val starsectorModDirectory = "${Variables.starsectorDirectory}/mods"
-val modInModsFolder = File("$starsectorModDirectory/${Variables.modName}")
+val modInModsFolder = File("$starsectorModDirectory/${Variables.modFolderName }")
 val modFiles = modInModsFolder.listFiles()
 
 plugins {

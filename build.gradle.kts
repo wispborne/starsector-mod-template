@@ -9,8 +9,8 @@ object Variables {
     val modVersion = "1.0.0"
     val jarFileName = "My_Mod.jar"
 
-    val modId = "yourName_uniqueid"
     val modName = "My Mod"
+    val modId = "yourName_uniqueid"
     val author = "Your Name"
     val description = "Mod description."
     val gameVersion = "0.95a-RC15"
@@ -30,7 +30,7 @@ object Variables {
 // Note: On Linux, use "${Variables.starsectorDirectory}" as core directory
 val starsectorCoreDirectory = "${Variables.starsectorDirectory}/starsector-core"
 val starsectorModDirectory = "${Variables.starsectorDirectory}/mods"
-val modInModsFolder = File("$starsectorModDirectory/${Variables.modFolderName }")
+val modInModsFolder = File("$starsectorModDirectory/${Variables.modFolderName}")
 val modFiles = modInModsFolder.listFiles()
 
 plugins {
@@ -84,6 +84,7 @@ tasks {
         val version = Variables.modVersion.split(".").let { javaslang.Tuple3(it[0], it[1], it[2]) }
         System.setProperty("line.separator", "\n") // Use LF instead of CRLF like a normal person
 
+        /* Uncomment to generate a mod_info.json from the variables defined at the top of this script.
         File(projectDir, "mod_info.json")
             .writeText(
                 """
@@ -108,7 +109,9 @@ tasks {
                     }
                 """.trimIndent()
             )
+        */
 
+        /* Uncomment to generate a Version Checker csv file from the variables defined at the top of this script.
         with(File(projectDir, "data/config/version/version_files.csv")) {
             this.parentFile.mkdirs()
             this.writeText(
@@ -119,7 +122,9 @@ tasks {
                 """.trimIndent()
             )
         }
+        */
 
+        /* Uncomment to generate a Version Checker .version file from the variables defined at the top of this script.
         File(projectDir, "${Variables.modId}.version")
             .writeText(
                 """
@@ -137,6 +142,7 @@ tasks {
                     }
                 """.trimIndent()
             )
+        */
 
 
         with(File(projectDir, ".github/workflows/mod-folder-name.txt")) {

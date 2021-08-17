@@ -1,0 +1,17 @@
+{
+    "id": "yourName_uniqueid",
+    "name": "My Mod",
+    "author": "Your Name",
+    "utility": "false",
+    "version": { "major":"1", "minor": "0", "patch": "0" },
+    "description": "Mod description.",
+    "gameVersion": "0.95a-RC15",
+    "jars":["jars/My_Mod.jar"],
+    "modPlugin":"com.example.template.LifecyclePlugin",
+    "dependencies": [
+        {
+            "id": "lw_lazylib",
+            "name": "LazyLib",
+        }
+    ]
+}

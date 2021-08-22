@@ -29,12 +29,12 @@ Choose whether you wish to manually update (default) the `mod_info.json` and Ver
 
 #### Option A (recommended): I will manually update my `mod_info.json` and Version Checker files
 
-- [ ] Update only `modName` in the `VARIABLES TO CHANGE` at the top of `build.gradle.kts`, then update the `mod_info.json`/Version Checker files by hand, as normal.
-- [ ] Double-check `starsectorDirectory` for correctness as well. It will need to be updated if you've installed the game to a non-default location.
+- [ ] Update `modName` in `object Variables` at the top of `build.gradle.kts`, then update the `mod_info.json`/Version Checker files by hand, as normal.
+- [ ] Double-check `starsectorDirectory` in `object Variables` for correctness as well. It will need to be updated if you've installed the game to a non-default location.
 
 #### Option B: Automatically update my `mod_info.json` and Version Checker files from a single config file
 
-- [ ] Update all values in the `VARIABLES TO CHANGE` at the top of `build.gradle.kts`, then uncomment the relevant (labeled)
+- [ ] Update all values in the `object AutoUpdateVariables` at the top of `build.gradle.kts`, then uncomment the relevant (labeled)
       sections in `build.gradle.kts`. Whenever you would normally manually update `mod_info.json` or Version Checker, update these values instead and the recompile and they will be updated.
 
 ### Step 2
@@ -82,6 +82,16 @@ Choose whether you wish to manually update (default) the `mod_info.json` and Ver
 *Example for this template*
 
 ![Final Run Configuration](screenshots/runConfig.png "Final Run Configuration")
+
+## Adding new libraries as dependencies
+
+By default, only LazyLib is added. To add other mod dependencies, open `build.gradle.kts` and navigate down to the `dependencies` section. 
+
+The easiest thing to do is to copy the existing LazyLib dependency, which starts with `compileOnly`, and modify it to point to the folder containing the .jar file(s) of the mod you're adding.
+
+After making any change to the `build.gradle.kts` file, click the "Load Gradle changes" button that should have appeared in the top-right corner.
+
+![gradle sync](readme_resources/gradle_build.png)
 
 ## Other
 

@@ -23,20 +23,43 @@ Written for IntelliJ Community. Latest version is 2021.1 as of writing.
 
 ## Initial Setup Checklist
 
-- [ ] Open `build.gradle.kts` and choose whether you wish to manually update (default) the `mod_info.json`/Version
-  Checker files or have it done automatically:
-    - Manual updates: update only `modName` in the `CHANGE ME` at the top, then update the `mod_info.json`/Version Checker
-      files by hand.
-    - Auto-generated updates: update all values in the `CHANGE ME` at the top, then uncomment the relevant (labeled)
-      sections in `build.gradle.kts`.
-- [ ] Change the package from the template default. In IntelliJ, open up `src/main/kotlin/com/example/template`,
+### Step 1
+
+Choose whether you wish to manually update (default) the `mod_info.json` and Version Checker files or have it done automatically.
+
+#### Option A (recommended): I will manually update my `mod_info.json` and Version Checker files
+
+- [ ] Update only `modName` in the `VARIABLES TO CHANGE` at the top of `build.gradle.kts`, then update the `mod_info.json`/Version Checker files by hand, as normal.
+- [ ] Double-check `starsectorDirectory` for correctness as well. It will need to be updated if you've installed the game to a non-default location.
+
+#### Option B: Automatically update my `mod_info.json` and Version Checker files from a single config file
+
+- [ ] Update all values in the `VARIABLES TO CHANGE` at the top of `build.gradle.kts`, then uncomment the relevant (labeled)
+      sections in `build.gradle.kts`. Whenever you would normally manually update `mod_info.json` or Version Checker, update these values instead and the recompile and they will be updated.
+
+### Step 2
+
+#### Option A: If starting a brand new project
+
+- [ ] Change the package from the template default. In IntelliJ, open up `src/main/java/com/example/template`,
   right-click on the first line (`package com.example.template`) and go to `Refactor - Rename`. From there, you may
   rename `com.example.template` to anything. If it pops up a refactoring preview, keep everything selected and
   click `Do Refactor`.
-- [ ] In `settings.gradle`, change `rootProject.name = 'template'` to be your new name instead.
+  - You will put any new code you write into the `src/main/java` or `/src/main/kotlin` directories.
+-  Any other assets, such as `graphics` or `data`, can go directly into the top-level folder (next to, but not inside, `src`).
+
+#### Option B: If importing existing code
+
+- [ ] Copy the code you want to use into the `src` directory.
+  - For example, if your code was in a folder structure like `data/scripts` (the .java files would start with a line like `package data.scripts;`), then the new folder structure would be `src/data/scripts`.
+  - If in doubt, look at the package name at the top of a `.java` file, then look for that folder. For example, Nexerelin has a file that starts with `package exerelin;`, so we look inside Nexerelin's `jars/src.zip` and find `sources/ExerelinCore/exerelin`. We copy only the `exerelin` folder into our template's `src` folder so that the `.java` file's location relative to `src` perfectly matches the package.
+  - The `main` folder in `src` can be ignored. It would be used for new projects, but is not needed for importing.
+- [ ] Any other assets, such as `graphics` or `data`, can go directly into the top-level folder (next to, but not inside, `src`).
 
 ### Optional
 
+- In `settings.gradle`, change `rootProject.name = 'template'` to be your new name instead.
+  - This changes how IntelliJ itself refers to the project, but shouldn't affect anything else.
 - Change `LICENSE` to something else. [Apache 2](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)) is a
   popular one.
 
@@ -50,8 +73,8 @@ Written for IntelliJ Community. Latest version is 2021.1 as of writing.
 - [ ] Check other values to make sure they fit your Starsector install. By default, they are set for a typical Windows
   install.
 - Click Ok. You should now be able to choose Run Starsector from the Run menu and then click the Debug button (the icon
-  of a bug)
-- Don't forget to enable your mod on the Starsector launch dialog!
+  of a bug) ![icon](readme_resources/debug_icon.png)
+- Don't forget to enable your mod on the Starsector launcher!
 - If you are running on linux, the VM Arguments should instead be
 
   ```-server -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005 -Djava.library.path=./native/linux -Xms1536m -Xmx1536m -Xss2048k -classpath janino.jar:commons-compiler.jar:commons-compiler-jdk.jar:starfarer.api.jar:starfarer_obf.jar:jogg-0.0.7.jar:jorbis-0.0.15.jar:json.jar:lwjgl.jar:jinput.jar:log4j-1.2.9.jar:lwjgl_util.jar:fs.sound_obf.jar:fs.common_obf.jar:xstream-1.4.10.jar -Dcom.fs.starfarer.settings.paths.saves=./saves -Dcom.fs.starfarer.settings.paths.screenshots=./screenshots -Dcom.fs.starfarer.settings.paths.mods=./mods -Dcom.fs.starfarer.settings.paths.logs=. -Dcom.fs.starfarer.settings.linux=true com.fs.starfarer.StarfarerLauncher```

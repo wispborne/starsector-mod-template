@@ -1,11 +1,10 @@
-package com.example.template
+package com.example
 
 import com.fs.starfarer.api.BaseModPlugin
 import com.fs.starfarer.api.Global
 import com.thoughtworks.xstream.XStream
-import main.java.ExampleEveryFrameScript
 
-class LifecyclePlugin : BaseModPlugin() {
+class ExampleLifecyclePlugin : BaseModPlugin() {
 
     override fun onNewGameAfterTimePass() {
         super.onNewGameAfterTimePass()

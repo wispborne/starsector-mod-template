@@ -2,69 +2,65 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 
 /**
- * VARIABLES TO CHANGE.
+ * RECOMMENDED VARIABLES TO CHANGE.
  */
-object Variables {
-    /**
-     * The name of your mod. Used to create a mod folder name (and the name of your mod, if using auto-updated mod_info.json).
-     */
-    val modName = "My Mod"
+/**
+ * The name of your mod. Used to create a mod folder name (and the name of your mod, if using auto-updated mod_info.json).
+ * Defaults to the name of the mod's folder.
+ */
+val modName = rootDir.name
 
-    /**
-     * Where your Starsector game is installed to.
-     * Note: On Linux, if you installed Starsector into your home directory, you have to write /home/<user>/ instead of ~/
-     */
-    val starsectorDirectory = "C:/Program Files (x86)/Fractal Softworks/Starsector"
+/**
+ * Where your Starsector game is installed to.
+ * Note: On Linux, if you installed Starsector into your home directory, you have to write /home/<user>/ instead of ~/
+ */
+val starsectorDirectory = "C:/Program Files (x86)/Fractal Softworks/Starsector"
 
-    // Defaults to the name of your mod, with spaces replaced by hyphens.
-    val modFolderName = modName.replace(" ", "-")
-}
+// Defaults to the name of your mod, with spaces replaced by hyphens.
+val modFolderName = modName.replace(" ", "-")
+/**
+ * END OF RECOMMENDED VARIABLES TO CHANGE.
+ */
 
 /**
  * Modify these if you wish to have mod_info.json and the Version Checker files updated for you automatically.
  */
-object AutoUpdateVariables {
-    val modVersion = "1.0.0"
-    val jarFileName = "My_Mod.jar"
-    val modId = "yourName_uniqueid"
-    val author = "Your Name"
-    val description = "Mod description."
-    val gameVersion = "0.95a-RC15"
-    val jars = arrayOf("jars/$jarFileName")
-    val modPlugin = "com.example.template.LifecyclePlugin"
-    val isUtilityMod = false
-    val masterVersionFile = "https://raw.githubusercontent.com/githubname/githubrepo/master/$modId.version"
-    val modThreadId = "00000"
-}
+val modVersion = "1.0.0"
+val jarFileName = "${modName}.jar"
+val modId = "yourName_uniqueid"
+val author = "Your Name"
+val description = "Mod description."
+val gameVersion = "0.95a-RC15"
+val jars = arrayOf("jars/$jarFileName")
+val modPlugin = "com.example.template.LifecyclePlugin"
+val isUtilityMod = false
+val masterVersionFile = "https://raw.githubusercontent.com/githubname/githubrepo/master/$modId.version"
+val modThreadId = "00000"
 //////////////////////
 
-// Note: On Linux, use "${Variables.starsectorDirectory}" as core directory
-val starsectorCoreDirectory = "${Variables.starsectorDirectory}/starsector-core"
-val starsectorModDirectory = "${Variables.starsectorDirectory}/mods"
-val modInModsFolder = File("$starsectorModDirectory/${Variables.modFolderName}")
+// Note: On Linux, use "${starsectorDirectory}" as core directory
+val starsectorCoreDirectory = "${starsectorDirectory}/starsector-core"
+val starsectorModDirectory = "${starsectorDirectory}/mods"
+val modInModsFolder = File("$starsectorModDirectory/${modFolderName}")
 val modFiles = modInModsFolder.listFiles()
 
-plugins {
-    kotlin("jvm") version "1.3.60"
-    java
-}
-
-version = AutoUpdateVariables.modVersion
-
-repositories {
-    maven(url = uri("$projectDir/libs"))
-    jcenter()
-}
-
+// The dependencies for the mod to *build* (not necessarily to run).
 dependencies {
-    // Add any other library dependencies needed by copying the below line and pointing it to the location of the .jar files.
-    // If using auto-generated mod_info.json, scroll down and change the "dependencies" part of mod_info.json, if you'd like dependencies to be displayed in the launcher.
-    // LazyLib is needed to use Kotlin, as it provides the Kotlin Runtime
-    compileOnly(fileTree("$starsectorModDirectory/LazyLib/jars") { include("*.jar") })
-    //compileOnly(fileTree("$starsectorModDirectory/MagicLib/jars") { include("*.jar") })
-    //compileOnly(fileTree("$starsectorModDirectory/GraphicsLib/jars") { include("*.jar") })
-    //compileOnly(fileTree("$starsectorModDirectory/Console Commands/jars") { include("*.jar") })
+    // If using auto-generated mod_info.json, scroll down and update the "dependencies" part of mod_info.json with
+    // any mod dependencies to be displayed in the Starsector launcher.
 
+    // Vanilla Starsector jars and dependencies
+    compileOnly(fileTree(starsectorCoreDirectory) { include("**/*.jar") })
+    // Use all mods in /mods folder to compile (this does not mean the mod requires them to run).
+    // LazyLib is needed to use Kotlin, as it provides the Kotlin Runtime, so ensure that that is in your mods folder.
+    compileOnly(fileTree(starsectorModDirectory) {
+        include("**/*.jar")
+        exclude("**/$jarFileName")
+    })
+
+    // Add any specific library dependencies needed by uncommenting and modifying the below line to point to the folder of the .jar files.
+    // All mods in the /mods folder are already included, so this would be for anything outside /mods.
+//    compileOnly(fileTree("C:/jars") { include("*.jar") })
 
     // Shouldn't need to change anything in dependencies below here
     implementation(fileTree("libs") { include("*.jar") })
@@ -73,32 +69,19 @@ dependencies {
     // Get kotlin sdk from LazyLib during runtime, only use it here during compile time
     compileOnly("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersionInLazyLib")
     compileOnly("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersionInLazyLib")
-
-    // Vanilla Starsector jars and dependencies
-    implementation(fileTree(starsectorCoreDirectory) {
-        include(
-            "starfarer.api.jar",
-            "starfarer.api-sources.jar",
-            "starfarer_obf.jar",
-            "fs.common_obf.jar",
-            "json.jar",
-            "xstream-1.4.10.jar",
-            "log4j-1.2.9.jar",
-            "lwjgl.jar",
-            "lwjgl_util.jar"
-        )
-    })
 }
 
 tasks {
     named<Jar>("jar")
     {
+        // Tells Gradle to put the .jar file in the /jars folder.
         destinationDirectory.set(file("$rootDir/jars"))
-        archiveFileName.set(AutoUpdateVariables.jarFileName)
+        // Sets the name of the .jar file.
+        archiveFileName.set(jarFileName)
     }
 
     register("create-metadata-files") {
-        val version = AutoUpdateVariables.modVersion.split(".").let { javaslang.Tuple3(it[0], it[1], it[2]) }
+        val version = modVersion.split(".").let { javaslang.Tuple3(it[0], it[1], it[2]) }
         System.setProperty("line.separator", "\n") // Use LF instead of CRLF like a normal person
 
         // Uncomment to generate a mod_info.json from the variables defined at the top of this script.
@@ -107,15 +90,15 @@ tasks {
 //                """
 //                    # THIS FILE IS GENERATED BY build.gradle.kts. (Note that Starsector's json parser permits `#` for comments)
 //                    {
-//                        "id": "${AutoUpdateVariables.modId}",
-//                        "name": "${Variables.modName}",
-//                        "author": "${AutoUpdateVariables.author}",
-//                        "utility": "${AutoUpdateVariables.isUtilityMod}",
+//                        "id": "${modId}",
+//                        "name": "${modName}",
+//                        "author": "${author}",
+//                        "utility": "${isUtilityMod}",
 //                        "version": { "major":"${version._1}", "minor": "${version._2}", "patch": "${version._3}" },
-//                        "description": "${AutoUpdateVariables.description}",
-//                        "gameVersion": "${AutoUpdateVariables.gameVersion}",
-//                        "jars":[${AutoUpdateVariables.jars.joinToString() { "\"$it\"" }}],
-//                        "modPlugin":"${AutoUpdateVariables.modPlugin}",
+//                        "description": "${description}",
+//                        "gameVersion": "${gameVersion}",
+//                        "jars":[${jars.joinToString() { "\"$it\"" }}],
+//                        "modPlugin":"${modPlugin}",
 //                        "dependencies": [
 //                            {
 //                                "id": "lw_lazylib",
@@ -133,7 +116,7 @@ tasks {
 //            this.writeText(
 //                """
 //                    version file
-//                    ${AutoUpdateVariables.modId}.version
+//                    ${modId}.version
 //
 //                """.trimIndent()
 //            )
@@ -141,14 +124,14 @@ tasks {
 
 
         // Uncomment to generate a Version Checker .version file from the variables defined at the top of this script.
-//        File(projectDir, "${AutoUpdateVariables.modId}.version")
+//        File(projectDir, "${modId}.version")
 //            .writeText(
 //                """
 //                    # THIS FILE IS GENERATED BY build.gradle.kts.
 //                    {
-//                        "masterVersionFile":"${AutoUpdateVariables.masterVersionFile}",
-//                        "modName":"${Variables.modName}",
-//                        "modThreadId":${AutoUpdateVariables.modThreadId},
+//                        "masterVersionFile":"${masterVersionFile}",
+//                        "modName":"${modName}",
+//                        "modThreadId":${modThreadId},
 //                        "modVersion":
 //                        {
 //                            "major":${version._1},
@@ -159,10 +142,11 @@ tasks {
 //                """.trimIndent()
 //            )
 
-
+        // Creates a file with the mod name to tell the Github Actions script the name of the mod.
+        // Not needed if not using Github Actions (but doesn't hurt to keep).
         with(File(projectDir, ".github/workflows/mod-folder-name.txt")) {
             this.parentFile.mkdirs()
-            this.writeText(Variables.modFolderName)
+            this.writeText(modFolderName)
         }
     }
 
@@ -185,21 +169,37 @@ tasks {
             }
         }
     }
-
 }
 
 sourceSets.main {
+    // List of where your Java source code is, if any.
     java.setSrcDirs(listOf("src"))
 }
 kotlin.sourceSets.main {
+    // List of where your Kotlin source code is, if any.
     kotlin.setSrcDirs(listOf("src"))
+    // List of where resources (the "data" folder) are.
     resources.setSrcDirs(listOf("data"))
 }
-// Compile to Java 6 bytecode so that Starsector can use it
+
+// Don't touch stuff below here unless you know what you're doing.
+plugins {
+    kotlin("jvm") version "1.3.60"
+    java
+}
+
+version = modVersion
+
+repositories {
+    maven(url = uri("$projectDir/libs"))
+    jcenter()
+}
+
+// Compile to Java 6 bytecode so that Starsector can use it (options are only 6 or 8)
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.6"
 }
-// Compile to Java 6 bytecode so that Starsector can use it
+// Compile to Java 7 bytecode so that Starsector can use it
 java {
     sourceCompatibility = JavaVersion.VERSION_1_7
     targetCompatibility = JavaVersion.VERSION_1_7

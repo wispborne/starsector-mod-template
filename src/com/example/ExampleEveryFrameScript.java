@@ -1,6 +1,5 @@
-package main.java;
+package com.example;
 
-import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.EveryFrameScript;
 
 public class ExampleEveryFrameScript implements EveryFrameScript {

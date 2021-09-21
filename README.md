@@ -34,16 +34,15 @@ Choose whether you wish to manually update (default) the `mod_info.json` and Ver
 
 #### Option B: Automatically update my `mod_info.json` and Version Checker files from a single config file
 
-- [ ] Update all values in the `object AutoUpdateVariables` at the top of `build.gradle.kts`, then uncomment the relevant (labeled)
-      sections in `build.gradle.kts`. Whenever you would normally manually update `mod_info.json` or Version Checker, update these values instead and the recompile and they will be updated.
+- [ ] Update all values in the `object AutoUpdateVariables` at the top of `build.gradle.kts`, then set `shouldAutomaticallyCreateMetadataFiles` to `true` in `build.gradle.kts`. Whenever you would normally manually update `mod_info.json` or Version Checker, update these values instead and the recompile and they will be updated.
 
 ### Step 2
 
 #### Option A: If starting a brand new project
 
-- [ ] Change the package from the template default. In IntelliJ, open up `src/main/java/com/example/template`,
-  right-click on the first line (`package com.example.template`) and go to `Refactor - Rename`. From there, you may
-  rename `com.example.template` to anything. If it pops up a refactoring preview, keep everything selected and
+- [ ] Change the package from the template default. In IntelliJ, open up `src/main/java/com/example`,
+  right-click on the first line (`package com.example`) and go to `Refactor - Rename`. From there, you may
+  rename `com.example` to anything. If it pops up a refactoring preview, keep everything selected and
   click `Do Refactor`.
   - You will put any new code you write into the `src/main/java` or `/src/main/kotlin` directories.
 -  Any other assets, such as `graphics` or `data`, can go directly into the top-level folder (next to, but not inside, `src`).

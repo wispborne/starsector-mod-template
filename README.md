@@ -4,7 +4,7 @@ v1.1.0
 
 ## Description
 
-This is a template for a Starsector mod that uses Gradle as its build system, Kotlin as the Gradle DSL, and Java and/or Kotlin as the programming language.
+This is a template for a generic Starsector mod that uses Gradle as its build system, Kotlin as the Gradle DSL, and Java and/or Kotlin as the programming language.
 
 Knowledge of Kotlin is _not_ required.
 
@@ -14,6 +14,8 @@ Another goal is to have more project configuration as code, rather than IDE-spec
 versioned (and be shared, as mentioned).
 
 Written for IntelliJ Community, but should work with any IDE. Latest version of IntelliJ is 2021.2 as of writing.
+
+Download IntelliJ here: <https://www.jetbrains.com/idea/download>
 
 ## Features
 
@@ -65,8 +67,7 @@ Choose whether you wish to manually update the `mod_info.json` and Version Check
 
 - In `settings.gradle`, change `rootProject.name = 'template'` to be your new name instead.
   - This changes how IntelliJ itself refers to the project, but shouldn't affect anything else.
-- Change `LICENSE` to something else. [Apache 2](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)) is a
-  popular one.
+- Change `LICENSE` to something else. [GPL-3](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)) is a popular one.
 
 ## IntelliJ Configuration
 
@@ -90,13 +91,24 @@ Choose whether you wish to manually update the `mod_info.json` and Version Check
 
 ## Adding new libraries as dependencies
 
-By default, only LazyLib is added. To add other mod dependencies, open `build.gradle.kts` and navigate down to the `dependencies` section. 
+By default, only LazyLib is added. To add other mod dependencies, open `build.gradle.kts` and navigate down to the `dependencies` section (`SECTION D.2`). 
 
 The easiest thing to do is to copy the existing LazyLib dependency, which starts with `compileOnly`, and modify it to point to the folder containing the .jar file(s) of the mod you're adding.
 
 After making any change to the `build.gradle.kts` file, click the "Load Gradle changes" button that should have appeared in the top-right corner.
 
 ![gradle sync](readme_resources/gradle_build.png)
+
+## Releasing (automatic)
+
+Tag a commit and push it. The tag name will become a release name, and the commit message will become a release message.
+
+```sh
+git commit -m "My first release" # you can just `git commit` and type a body of release as well
+git push origin master           # Send the commit to your repo (no release yet)
+git tag 1.0.0                    # No release yet, it's only local now
+git push --tags origin master    # Release is happening now
+```
 
 ## Other
 
@@ -107,4 +119,4 @@ Contributors
 - Jaghaimo for tons of suggestions, inspiration, and corrections.
 - ruddygreat for battling her way through using an earlier version and providing lots of clear, much-needed feedback.
 
-License: [Unlicense](https://github.com/davidwhitman/starsector-mod-template/blob/master/LICENSE)
+License: [GPL v3](https://github.com/davidwhitman/starsector-mod-template/blob/master/LICENSE)

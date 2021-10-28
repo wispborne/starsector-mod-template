@@ -91,7 +91,7 @@ dependencies {
 
     //////////////////////////////////////////
     // SECTION D.3: KOTLIN DEPENDENCIES
-    // Shouldn't need to change anything in dependencies below here
+    // Shouldn't need to change anything in SECTION D below here
     val kotlinVersionInLazyLib = "1.4.21"
     // Get kotlin sdk from LazyLib during runtime, only use it here during compile time
     compileOnly("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersionInLazyLib")

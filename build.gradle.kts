@@ -243,9 +243,5 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.6"
 }
 // Compile Java to Java 7 bytecode so that Starsector can use it
-java {
-    // If this is showing as an error, just ignore it because it works.
-    // Welcome to Gradle.
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
-}
+java.sourceCompatibility = JavaVersion.VERSION_1_7
+java.targetCompatibility = JavaVersion.VERSION_1_7

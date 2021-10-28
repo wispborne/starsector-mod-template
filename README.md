@@ -4,26 +4,22 @@ v1.1.0
 
 ## Description
 
-This is a template for a generic Starsector mod that uses Gradle as its build system, Kotlin as the Gradle DSL, and Java and/or Kotlin as the programming language.
+This is a template for a generic Starsector mod using Java.
 
-Knowledge of Kotlin is _not_ required.
+Simply download it as a `.zip`, clone it using `git clone https://github.com/davidwhitman/starsector-mod-template.git`, or click ["Use this template"](https://github.com/davidwhitman/starsector-mod-template/generate) and then follow the instructions below.
 
-One of the main goals is to move as much of the build process out of IntelliJ as possible, so that anybody can pull down the source code and build the project with minimal hassle. IntelliJ is not even required to build the mod, which can be done using the Gradle wrapper on the command line (for advanced users only, not described here).
+When you are done, you will have a mod that does nothing, but is ready for anything to be added.
 
-Another goal is to have more project configuration as code, rather than IDE-specific files. That way, they'll get
-versioned (and be shared, as mentioned).
-
-Written for IntelliJ Community, but should work with any IDE. Latest version of IntelliJ is 2021.2 as of writing.
-
-Download IntelliJ here: <https://www.jetbrains.com/idea/download>
+Written for IntelliJ Community ([free download](https://www.jetbrains.com/idea/download)), but should work with any IDE. Latest version of IntelliJ is 2021.2 as of writing.
 
 ## Features
 
 - A one-click command to build your mod and launch Starsector with full breakpoint debugging.
 - Automatically generated `mod_info.json` and Version Checker files.
-    - Set your mod's version once in `build.gradle.kts` and both files will be updated.
+  - Set your mod's version once in `build.gradle.kts` and both files will be updated.
 - A new GitHub Release will be created automatically whenever a git tag is pushed, if the mod is hosted on GitHub.
-    - Delete the `.github` folder to disable this.
+  - Delete the `.github` folder to disable this.
+- Gradle build system, works with any IDE (but you don't need to know what Gradle is).
 
 ## Initial Setup Checklist
 
@@ -53,7 +49,7 @@ Choose whether you wish to manually update the `mod_info.json` and Version Check
   rename `com.example` to anything lowercase you like (e.g. "wisp.perseanchronicles"). If it pops up a refactoring preview, keep everything selected and
   click `Do Refactor`.
   - You will put any new code you write into the `src/com/example` directory (or `src/wisp/perseanchronicles` or whatever you named it in the previous step).
--  Any other assets, such as `graphics` or `data`, can go directly into the top-level folder (next to, but not inside, `src`).
+- Any other assets, such as `graphics` or `data`, can go directly into the top-level folder (next to, but not inside, `src`).
 
 #### Option 2: If importing existing code
 
@@ -109,6 +105,17 @@ git push origin master           # Send the commit to your repo (no release yet)
 git tag 1.0.0                    # No release yet, it's only local now
 git push --tags origin master    # Release is happening now
 ```
+
+## In-Depth Description & Purpose
+
+This is a template for a generic Starsector mod that uses Gradle as its build system, Kotlin as the Gradle DSL, and Java and/or Kotlin as the programming language.
+
+Knowledge of Kotlin is _not_ required.
+
+One of the main goals is to move as much of the build process out of IntelliJ as possible, so that anybody can pull down the source code and build the project with minimal hassle. IntelliJ is not even required to build the mod, which can be done using the Gradle wrapper on the command line (for advanced users only, not described here).
+
+Another goal is to have more project configuration as code, rather than IDE-specific files. That way, they'll get
+versioned (and be shared, as mentioned).
 
 ## Other
 

@@ -1,17 +1,19 @@
 # Starsector Mod Template using Gradle and IntelliJ
 
+v1.1.0
+
 ## Description
 
-This is a template for a Starsector mod that uses Gradle as its build system, Kotlin as the Gradle DSL, and Kotlin as
-the programming language.
+This is a template for a Starsector mod that uses Gradle as its build system, Kotlin as the Gradle DSL, and Java and/or Kotlin as the programming language.
 
-One of the main goals is to move as much of the build process out of IntelliJ as possible, so that anybody can pull down
-the source code and build the project with minimal hassle. IntelliJ is not required to build the mod.
+Knowledge of Kotlin is _not_ required.
+
+One of the main goals is to move as much of the build process out of IntelliJ as possible, so that anybody can pull down the source code and build the project with minimal hassle. IntelliJ is not even required to build the mod, which can be done using the Gradle wrapper on the command line (for advanced users only, not described here).
 
 Another goal is to have more project configuration as code, rather than IDE-specific files. That way, they'll get
 versioned (and be shared, as mentioned).
 
-Written for IntelliJ Community. Latest version is 2021.1 as of writing.
+Written for IntelliJ Community, but should work with any IDE. Latest version of IntelliJ is 2021.2 as of writing.
 
 ## Features
 
@@ -25,29 +27,33 @@ Written for IntelliJ Community. Latest version is 2021.1 as of writing.
 
 ### Step 1
 
-Choose whether you wish to manually update (default) the `mod_info.json` and Version Checker files or have it done automatically.
+Choose whether you wish to manually update the `mod_info.json` and Version Checker files (manual updating is the default option) or have it done automatically (requires slightly more setup).
+
+#### First do these, then choose Option A or Option B
+
+- [ ] In `build.gradle.kts` `SECTION A`, set the `modName` variable.
+- [ ] In `build.gradle.kts` `SECTION A`, check `starsectorDirectory` for correctness. It will need to be updated if you've installed the game to a non-default location or aren't on Windows.
 
 #### Option A (recommended): I will manually update my `mod_info.json` and Version Checker files
 
-- [ ] Update `modName` in `object Variables` at the top of `build.gradle.kts`, then update the `mod_info.json`/Version Checker files by hand, as normal.
-- [ ] Double-check `starsectorDirectory` in `object Variables` for correctness as well. It will need to be updated if you've installed the game to a non-default location.
+- [ ] Go and update the `mod_info.json` and Version Checker (if you are supporting Version Checker) files by hand
 
 #### Option B: Automatically update my `mod_info.json` and Version Checker files from a single config file
 
-- [ ] Update all values in the `object AutoUpdateVariables` at the top of `build.gradle.kts`, then set `shouldAutomaticallyCreateMetadataFiles` to `true` in `build.gradle.kts`. Whenever you would normally manually update `mod_info.json` or Version Checker, update these values instead and the recompile and they will be updated.
+- [ ] In `build.gradle.kts` `SECTION B`, set `shouldAutomaticallyCreateMetadataFiles` to `true`, then set the rest of the variables in `SECTION B`. Whenever you would normally manually update `mod_info.json` or Version Checker, update these values in `SECTION B` instead and, upon mod recompile, they will be updated.
 
 ### Step 2
 
-#### Option A: If starting a brand new project
+#### Option 1: If starting a brand-new project
 
-- [ ] Change the package from the template default. In IntelliJ, open up `src/main/java/com/example`,
-  right-click on the first line (`package com.example`) and go to `Refactor - Rename`. From there, you may
-  rename `com.example` to anything. If it pops up a refactoring preview, keep everything selected and
+- [ ] Change the package from the template default. In IntelliJ, open up `ExampleEveryFrameScript`,
+  right-click on the first line in the file (`package com.example;`) and go to `Refactor - Rename`. From there, you may
+  rename `com.example` to anything lowercase you like (e.g. "wisp.perseanchronicles"). If it pops up a refactoring preview, keep everything selected and
   click `Do Refactor`.
-  - You will put any new code you write into the `src/main/java` or `/src/main/kotlin` directories.
+  - You will put any new code you write into the `src/com/example` directory (or `src/wisp/perseanchronicles` or whatever you named it in the previous step).
 -  Any other assets, such as `graphics` or `data`, can go directly into the top-level folder (next to, but not inside, `src`).
 
-#### Option B: If importing existing code
+#### Option 2: If importing existing code
 
 - [ ] Copy the code you want to use into the `src` directory.
   - For example, if your code was in a folder structure like `data/scripts` (the .java files would start with a line like `package data.scripts;`), then the new folder structure would be `src/data/scripts`.
@@ -80,7 +86,7 @@ Choose whether you wish to manually update (default) the `mod_info.json` and Ver
 
 *Example for this template*
 
-![Final Run Configuration](screenshots/runConfig.png "Final Run Configuration")
+![Final Run Configuration](readme_resources/runConfig.png "Final Run Configuration")
 
 ## Adding new libraries as dependencies
 
@@ -94,6 +100,11 @@ After making any change to the `build.gradle.kts` file, click the "Load Gradle c
 
 ## Other
 
-Author: Wispborne (Wisp#0302 on the Unofficial Starsector Discord)
+Author: Wisp
+
+Contributors
+
+- Jaghaimo for tons of suggestions, inspiration, and corrections.
+- ruddygreat for battling her way through using an earlier version and providing lots of clear, much-needed feedback.
 
 License: [Unlicense](https://github.com/davidwhitman/starsector-mod-template/blob/master/LICENSE)

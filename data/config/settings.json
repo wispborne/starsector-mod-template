@@ -1,0 +1,24 @@
+{
+#     "plugins":{
+#         "ML_fakeBeamPlugin":"data.scripts.plugins.MagicFakeBeamPlugin",
+#     },
+# 
+#     "graphics":{
+# 		"character":{
+# 			"godiva":"graphics/portraits/godiva.jpg",
+# 		},
+#         "beams":{
+#             "fakeBeamCore":"graphics/magic/fx/fakebeam/fakeBeamCore.png",
+#         },
+# 		"fx":{
+#             "base_trail_smooth":"graphics/magic/fx/base_trail_smooth.png",
+# 		},
+# 		"intel":{
+# 			"magicBounties":"graphics/magic/icons/ml_bounty.png",
+# 		},
+#     },
+#     # Gives additional places to look for loose scripts to load for rules.csv.
+#     "ruleCommandPackages": [
+#         "data.scripts.bounty.rulecmd"
+#     ]
+}

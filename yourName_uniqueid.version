@@ -1,6 +1,6 @@
 {
     "masterVersionFile":"https://raw.githubusercontent.com/githubname/githubrepo/master/yourName_uniqueid.version",
-    "modName":"My Mod",
+    "modName":"starsector-gradle-template",
     "modThreadId":00000,
     "modVersion":
     {

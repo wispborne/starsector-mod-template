@@ -1,17 +1,18 @@
 {
     "id": "yourName_uniqueid",
-    "name": "My Mod",
+    "name": "starsector-gradle-template",
     "author": "Your Name",
     "utility": "false",
     "version": { "major":"1", "minor": "0", "patch": "0" },
     "description": "Mod description.",
     "gameVersion": "0.95a-RC15",
-    "jars":["jars/My_Mod.jar"],
-    "modPlugin":"com.example.template.LifecyclePlugin",
+    "jars":["jars/starsector-gradle-template.jar"],
+    "modPlugin":"com.example.ExampleLifecyclePlugin",
     "dependencies": [
         {
             "id": "lw_lazylib",
             "name": "LazyLib",
+            # "version": "2.6" # If a specific version or higher is required, include this line
         }
     ]
 }

@@ -92,7 +92,7 @@ dependencies {
     //////////////////////////////////////////
     // SECTION D.3: KOTLIN DEPENDENCIES
     // Shouldn't need to change anything in SECTION D below here
-    val kotlinVersionInLazyLib = "1.4.21"
+    val kotlinVersionInLazyLib = "1.5.31"
     // Get kotlin sdk from LazyLib during runtime, only use it here during compile time
     compileOnly("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersionInLazyLib")
     compileOnly("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersionInLazyLib")
@@ -227,7 +227,7 @@ kotlin.sourceSets.main {
 // ==== DANGER ====
 // -----DON'T TOUCH STUFF BELOW THIS LINE UNLESS YOU KNOW WHAT YOU'RE DOING  -------------------
 plugins {
-    kotlin("jvm") version "1.3.60"
+    kotlin("jvm") version "1.5.0"
     java
 }
 

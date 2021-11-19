@@ -7,7 +7,7 @@
     "description": "Mod description.",
     "gameVersion": "0.95a-RC15",
     "jars":["jars/starsector-gradle-template.jar"],
-    "modPlugin":"com.example.ExampleLifecyclePlugin",
+    "modPlugin":"com.example.ExampleModPlugin",
     "dependencies": [
         {
             "id": "lw_lazylib",

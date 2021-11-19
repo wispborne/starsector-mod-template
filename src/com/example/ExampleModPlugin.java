@@ -4,7 +4,7 @@ import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
 import com.thoughtworks.xstream.XStream;
 
-public class ExampleLifecyclePlugin extends BaseModPlugin {
+public class ExampleModPlugin extends BaseModPlugin {
 
     @Override
     public void onGameLoad(boolean newGame) {

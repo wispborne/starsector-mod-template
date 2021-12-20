@@ -7,5 +7,7 @@
         "major":1,
         "minor":0,
         "patch":0
-    }
+    },
+    # Optional support for mod managers to allow users to update with one click, without visiting a mod page.
+    "directDownloadURL": "https://github.com/yourUsername/yourRepo/releases/download/1.0.0/your-mod-1.0.0.zip"
 }

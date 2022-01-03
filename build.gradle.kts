@@ -29,7 +29,7 @@ val jarFileName = "${modName}.jar"
 val modId = "yourName_uniqueId"
 val modAuthor = "Your Name"
 val modDescription = "Mod description."
-val gameVersion = "0.95a-RC15"
+val gameVersion = "0.95.1a-RC6"
 val jars = arrayOf("jars/$jarFileName")
 val modPlugin = "com.example.ExampleModPlugin"
 val isUtilityMod = false
@@ -79,7 +79,7 @@ dependencies {
     if (File(starsectorModDirectory).exists()) {
         compileOnly(fileTree(starsectorModDirectory) {
             include("**/*.jar")
-            exclude("**/$jarFileName")
+            exclude("**/$jarFileName", "**/lib/*", "**/libs/*")
         })
     } else {
         println("$starsectorModDirectory did not exist, not adding mod folder dependencies.")

@@ -25,7 +25,7 @@ val modFolderName = modName.replace(" ", "-")
 val shouldAutomaticallyCreateMetadataFiles = false
 // Then, if above is set to true, update the rest of the information below in SECTION B.
 val modVersion = "1.0.0"
-val jarFileName = "${modName}.jar"
+val jarFileName = "${modName.replace(" ", "-")}.jar"
 val modId = "yourName_uniqueId"
 val modAuthor = "Your Name"
 val modDescription = "Mod description."

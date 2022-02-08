@@ -6,6 +6,8 @@ v1.2.0
 
 This is a template for a generic Starsector mod using Java.
 
+There is a video walkthrough to set it up here: https://www.youtube.com/watch?v=q63p67f-F8k.
+
 Simply download it as a `.zip`, clone it using `git clone https://github.com/davidwhitman/starsector-mod-template.git`, or click ["Use this template"](https://github.com/davidwhitman/starsector-mod-template/generate) and then follow the instructions below.
 
 When you are done, you will have a mod that does nothing, but is ready for anything to be added.
@@ -22,6 +24,8 @@ Written for IntelliJ Community ([free download](https://www.jetbrains.com/idea/d
 - Gradle build system, works with any IDE (but you don't need to know what Gradle is).
 
 ## Initial Setup Checklist
+
+(or follow along with [this video tutorial](https://www.youtube.com/watch?v=q63p67f-F8k))
 
 ### Step 1
 

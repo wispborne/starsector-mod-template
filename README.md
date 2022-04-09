@@ -121,6 +121,29 @@ One of the main goals is to move as much of the build process out of IntelliJ as
 Another goal is to have more project configuration as code, rather than IDE-specific files. That way, they'll get
 versioned (and be shared, as mentioned).
 
+## Explanation of Folders/Files
+
+- `.git/` Optional. Used by git to store all git-related information. May be deleted if you are not using git.
+- `.github/` Optional. May be used to automatically create a new Release on GitHub by pushing a tag (see aabove). May be deleted if not using that.
+- `.gradle/` Required. Used by Gradle, the build script. Will be recreated if you delete it.
+- `.idea/` Required. Used by IntelliJ to store settings and configuration.
+- `.run/` Optional. Used by IntelliJ, contains a ready-to-use configuration for running the game. May be deleted if you want to make your own Run Configuration instead.
+- `data/` Optional. Used by Starsector, this folder just contains some common files that mods use that you would probably end up creating yourself. May be deleted if you don't need it.
+- `gradle/` Required. Used by Gradle, the build script, and removing it will prevent the project from compiling.
+- `libs/` Required. Contains the vanilla Starsector code used to compile the mod.
+- `readme_resources/` Optional. contains files used to display this readme. May be deleted.
+- `src/` Optional? Contains example source code which you will presumably build upon. May be deleted if your mod doesn't have any code (but then why use this template...?)
+- `.gitignore` Optional. Used by git to determine which files should not be committed (for example, not to commit temp files used during the build process). May be deleted if not using git.
+- `build.gradle.kts` Required. This is the build script. The mod will not compile without it.
+- `gradle.properties` Required. Used by Gradle, the build script, to configure itself.
+- `gradlew` Optional. This is one way to compile the mod. Keep this if using GitHub Actions or you are on Linux/MacOS.
+- `gradlew.bat` Optional. This is one way to compile the mod. Keep this if using Windows.
+- `LICENSE` Optional. This is the license file, delete or modify it to your liking.
+- `mod_info.json` Required. Obviously.
+- `README.md` Required? You tell me.
+- `settings.gradle` Required. Change the line in here to change what IntelliJ calls the project (in the Windows taskbar and window title).
+- `yourName_uniqueid.version` Optional. This is a sample Version Checker file. May be deleted if not using Version Checker (but you should).
+
 ## Other
 
 Author: Wisp

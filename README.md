@@ -153,4 +153,4 @@ Contributors
 - Jaghaimo for tons of suggestions, inspiration, and corrections.
 - ruddygreat for battling her way through using an earlier version and providing lots of clear, much-needed feedback.
 
-License: [GPL v3](https://github.com/davidwhitman/starsector-mod-template/blob/master/LICENSE)
+License: [MIT](https://github.com/davidwhitman/starsector-mod-template/blob/master/LICENSE)

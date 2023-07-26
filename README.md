@@ -1,6 +1,12 @@
 # Starsector Mod Template using Gradle and IntelliJ
 
-v1.2.0
+## NOT MAINTAINED
+
+I have switched to maintaining https://github.com/wispborne/Starsector-IntelliJ-Template instead.
+
+This template may need slight updating to work (such as replacing the files in `libs` with updated game jars).
+
+The IntelliJ template is easier to use, faster, and is less complex (no weird Gradle errors). The drawbacks are that it only works with IntelliJ and it doesn't have the flexibility of Gradle.
 
 ## Description
 

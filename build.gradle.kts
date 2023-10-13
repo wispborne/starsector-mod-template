@@ -1,3 +1,4 @@
+import org.apache.tools.ant.taskdefs.condition.Os
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 //
@@ -10,10 +11,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 val modName = rootDir.name
 
 /**
- * Where your Starsector game is installed to.
+ * Where your Starsector game is installed to. Either set the system variable STARSECTOR_DIRECTORY to that path, or change
+ * the path behind the ?:.
  * Note: On Linux, if you installed Starsector into your home directory, you have to write /home/<user>/ instead of ~/
  */
-val starsectorDirectory = "C:/Program Files (x86)/Fractal Softworks/Starsector"
+val starsectorDirectory = System.getenv("STARSECTOR_DIRECTORY") ?: "C:/Program Files (x86)/Fractal Softworks/Starsector"
 
 /** Defaults to the name of your mod, with spaces replaced by hyphens. */
 val modFolderName = modName.replace(" ", "-")
@@ -41,9 +43,9 @@ val modThreadId = "00000"
 //
 //
 // ==============
-// ==== SECTION C: Game paths, probably won't need to change these unless you're on Unix ====
+// ==== SECTION C: Game paths, probably won't need to change these ====
 // Note: On Linux, change the below line to `val starsectorCoreDirectory = "${starsectorDirectory}"`
-val starsectorCoreDirectory = "${starsectorDirectory}/starsector-core"
+val starsectorCoreDirectory = if(Os.isFamily(Os.FAMILY_UNIX)) starsectorDirectory else "${starsectorDirectory}/starsector-core"
 val starsectorModDirectory = "${starsectorDirectory}/mods"
 val modInModsFolder = File("$starsectorModDirectory/${modFolderName}")
 
